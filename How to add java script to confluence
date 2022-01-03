@@ -1,0 +1,3 @@
+Confluence provides the ability to include JavaScript codes either inside the Custom HTML or HTML macro. 
+Applying the JavaScript inside the Custom HTML will enforce the script to be loaded in site-wide. 
+However, applying the JavaScript inside the HTML macro will only trigger the script in a specific page in which the macro is placed.
