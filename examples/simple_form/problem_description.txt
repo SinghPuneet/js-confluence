@@ -1,0 +1,2 @@
+In this example we will create a simple form using javascript on confluence.
+Also see attached snapshots to understand its working
