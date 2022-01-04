@@ -1,0 +1,414 @@
+<html version="1.0">
+<style>
+.wrapper {
+float: left;
+width: 500px;
+padding: 8px 16px;
+font-family: 'Segoe UI';
+font-size: small;
+vertical-align: middle;
+background-color: rgb(244, 245, 247);
+}
+
+select {
+padding: 6px 8px;
+margin: 4px 0;
+border-style: none;
+color: #0065FF;
+background-color: #ffffff;
+}
+
+input[type=text],
+input[type=email],
+input[type=date] {
+padding: 6px 8px;
+margin: 4px 0;
+color: #0065FF;
+border-style: none;
+background-color: #ffffff;
+width: 90%;
+}
+
+input[type=checkbox] {
+margin: 6px 0;
+vertical-align: middle;
+}
+
+input[type=file] {
+padding: 6px 8px;
+margin: 8px 0;
+color: #0065FF;
+}
+
+input[type=button],
+input[type=submit],
+input[type=reset] {
+background-color: #0065FF;
+border: none;
+border-radius: 4px;
+color: white;
+padding: 8px 16px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+button {
+background-color: #01a131;
+border: none;
+color: white;
+text-decoration: none;
+cursor: pointer;
+}
+
+#table1 {
+table-layout: fixed;
+font-size: small;
+width: 100%;
+}
+
+#table1 td {
+vertical-align: top;
+font-size: small;
+width: 100%;
+}
+
+
+.wrapper2 {
+float: left;
+width: 500px;
+font-size: small;
+background-color: rgb(244, 245, 247);
+vertical-align: middle;
+}
+
+.wrapper2 table {
+border: 0;
+padding: 0;
+border: none;
+border-collapse: collapse;
+}
+
+.wrapper2 th {
+border: none !important;
+}
+
+.wrapper2 input[type=text] {
+color: #0065FF;
+border-style:initial;
+width: 90%;
+margin: 0;
+padding: 4px 4px;
+}
+
+.loading {
+background-color: #696969 !important;
+border: none;
+border-radius: 4px;
+color: white;
+padding: 8px 16px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+</style>
+
+
+<div class="wrapper">
+<h2>Nomination Form</h2>
+<hr style="color: #0065FF;background-color:#0065FF;border-color: #0065FF;height: 2px;">
+<fieldset>
+<br>
+<table id="table1">
+<tbody>
+<tr>
+<td>
+<label for="name"><strong>Name</strong></label><br>
+<input type="text" id="name" name="name" required readonly>
+</td>
+<td>
+<label for="email"><strong>Email</strong></label><br>
+<input type="email" id="email" name="email" required readonly>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+<table id="table1">
+<tbody>
+<tr>
+<td>
+<label for="prname"><strong>Project Name</strong></label><br>
+<input type="text" id="prname" name="prname" style="width:60%;" required><br><br>
+<label for="category"><strong>Nomination Category</strong></label><br>
+<select id="category" name="category" required>
+<option value="Individual">Individual</option>
+<option value="Team">Team</option>
+</select><br><br>
+</td>
+</tr>
+<tr>
+<td>
+<label for="area_of_contribution"><strong>Area of Contribution</strong></label><br>
+<input id="aoc_excellence" name="areas_of_contribution" type="checkbox"
+value="Excellence in Execution">
+<span style="vertical-align: middle">Excellence in Execution</span><br>
+<input id="aoc_innovation" name="areas_of_contribution" type="checkbox" value="Innovation">
+<span style="vertical-align: middle">Innovation</span><br>
+<input id="aoc_leadership" name="areas_of_contribution" type="checkbox" value="Leadership">
+<span style="vertical-align: middle">Leadership</span><br>
+<input id="aoc_business_growth" name="areas_of_contribution" type="checkbox"
+value="Business Growth">
+<span style="vertical-align: middle">Business Growth</span><br>
+<input id="aoc_knowledge_sharing" name="areas_of_contribution" type="checkbox"
+value="Knowledge Sharing">
+<span style="vertical-align: middle">Knowledge Sharing</span><br>
+<input id="aoc_core_values" name="areas_of_contribution" type="checkbox"
+value="Core Values">
+<span style="vertical-align: middle">Core Values</span><br><br>
+
+<label for="prname"><strong>Presentation</strong></label><br>
+<span style="font-size: smaller; font-style: italic;">Attach the slide deck that will be
+used to present the nomination to the jury.</span><br>
+<input type="file" name="fileToUpload" id="fileToUpload" onchange="onFileUpload(this)">
+</td>
+</tr>
+</tbody>
+</table>
+<br><span><strong>Nominee List</strong></span><br>
+<hr>
+
+<div style="text-align:right">
+<button type="button" id="add_row" name="add_row" onclick="addRow('nomineeTable')">+</button>
+<button style="background-color:#c50e0e" type="button" id="delete_row" name="delete_row"
+onclick="deleteRow('nomineeTable')">-</button>
+</div>
+
+<div class="wrapper2">
+<table class="wrapper2" id="nomineeTable" name="nomineeTable" width="100%" cellspacing="0" cellpadding="1">
+<tbody>
+<tr style="width: 90%; border: none;">
+<th style="width: 20%;font-size: small;text-align: left;background-color:#F4F5F7;font-style: normal;">TGI</th>
+<th style="width: 40%;font-size: small;text-align: left;background-color:#F4F5F7;font-style: normal;">Name</th>
+</tr>
+<tr style="width: 90%;">
+<td style="width: 20%;"><input type="text" id="tgi_nominee_1" name="tgi_nominee_1"></td>
+<td style="width: 40%;"><input type="text" id="name_nominee_1" name="name_nominee_1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br><br>
+</fieldset>
+<br>
+<div style="text-align: center;">
+<input type="submit" value="Submit" onclick="submitForm()" id="submit">
+</div>
+</div>
+<script type="text/javascript">
+
+var CONFLUENCE_URL 
+var CSV_FILE_NAME = "nomination.csv"
+var CURRENT_PAGE_ID 
+var ATTACH_ID = "813607361" // This is the confluence id of the file which be updated. In this case it is nomination.csv
+var FILE_UPLOADED = false
+var NOMINEE_ATTACHEMENT = ""
+
+var NOMINATOR_NAME = ""
+var NOMINATOR_EMAIL = ""
+var DATE_OF_NOMINATION = null  
+var AREAS_OF_CONTRIBUTION = ""
+var NOMINATED_EARLIER = null
+var NOMINATION_CATEGORY = ""
+var NOMINEE_LIST = ""
+var PROJECT_NAME = ""
+var FILE_NAME = ""
+
+
+function intitalize() {	
+	CURRENT_PAGE_ID = AJS.Meta.get("page-id")
+	CONFLUENCE_URL = AJS.Meta.get("base-url")
+	getCurrentUser()
+	
+}
+
+
+function getCurrentUser() {
+	AJS.$.ajax({
+		url: "/rest/gadget/1.0/currentUser",
+		type: "get",
+		dataType: "json",
+		async: !1,
+		success: function (e) {
+			fullname = e.fullName.split(" ")
+			name = fullname.slice(1, fullname.length ).join(" ")
+			lname = fullname[0]
+			email = e.email
+			//alert("user detail are" , e)
+			console.log("user detail are" , e)
+		}
+	})
+	document.getElementById('name').value = toTitleCase(name + " " + lname) 
+	//AJS.Meta.get("current-user-fullname")
+	//
+	document.getElementById('email').value = email
+	document.getElementById('submission_date').value = (new Date().toJSON().slice(0,10))
+	
+}
+
+function toTitleCase(str) {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}
+
+
+function startLoading() {	
+	var submitButton = document.getElementById('submit');
+	submitButton.value = "Submitting..."
+	submitButton.classList.add ("loading"); 	
+	submitButton.disabled = true;
+	console.log("start loading", submitButton)
+}
+
+function stopLoading() {	
+	var submitButton = document.getElementById('submit');
+	submitButton.value = "Submit"
+	submitButton.classList.remove("loading");
+	submitButton.disabled = false;
+	console.log("stop loading", submitButton )
+}
+
+function onFileUpload(input) {	
+	if (input.files && input.files[0]) {
+		NOMINEE_ATTACHEMENT = input.files[0]}
+		var suffixForFile = new Date().toISOString()
+		FILE_NAME = suffixForFile + "__" +  NOMINEE_ATTACHEMENT.name
+		FILE_UPLOADED = true
+	
+}
+ 
+
+
+function submitForm() {	
+     
+    console.log("all as map", AJS.Meta.getAllAsMap())	
+	
+	
+	NOMINATOR_NAME = AJS.$("#name").val()
+	NOMINATOR_EMAIL = AJS.$("#email").val()
+	DATE_OF_NOMINATION =  (new Date().toJSON().slice(0,10))
+	//AJS.$("#submission_date").val()
+	AREAS_OF_CONTRIBUTION = getAreasOfContribution("areas_of_contribution").join(" | ");
+	//NOMINATED_EARLIER = AJS.$("#nominated_earlier").val()
+	PROJECT_NAME = AJS.$("#prname").val()
+	NOMINATION_CATEGORY = AJS.$("#category").val()
+	NOMINEE_LIST = getNomineesList("nomineeTable" ).join(" | ")
+	
+	if ( PROJECT_NAME === "" ) {
+		return alert("Please add Project Name")
+	}
+	if ( AREAS_OF_CONTRIBUTION.length === 0 ) {
+		return alert("Please select one of the option from Area of Contribution")
+	}
+	
+	if ( NOMINEE_LIST.length <= 0 ) {
+		return alert("Please provide details of at-least one Nominee")
+	}
+	
+	if ( !FILE_UPLOADED ) {
+		 return alert("No file attached")
+	}
+	
+	
+	console.log("name : ",NOMINATOR_NAME )
+	console.log("email : ", NOMINATOR_EMAIL)
+	console.log("DATE_OF_NOMINATION : ", DATE_OF_NOMINATION )
+	console.log("areas_of_contribution : ", AREAS_OF_CONTRIBUTION )
+	console.log("project name : ", PROJECT_NAME )
+	console.log("nomination_category : ", NOMINATION_CATEGORY)
+	console.log("nominee list : " , NOMINEE_LIST)
+	
+	//appendCSV();
+	
+	
+}
+
+
+
+function addRow(tableName) {	
+	var table = document.getElementById(tableName)
+	var category = document.getElementById("category").value
+	if ( category === "Individual" ){
+		
+		return alert("For Individual category you can nominate only One Nominee")
+		
+	}
+     var totalRows = table.rows.length;
+	 if (totalRows >= 11 ) {
+		 alert("You can add only 10 Nominees")
+	 }else {
+		 var table = document.getElementById(tableName);
+		 var row = table.insertRow(totalRows );
+		 var cell1 = row.insertCell(0);
+		 var cell2 = row.insertCell(1);
+		 var child1 = document.createElement("INPUT");
+		 child1.setAttribute("type", "text");
+		 var child2 = document.createElement("INPUT");
+		 child2.setAttribute("type", "text");
+		 cell1.appendChild(child1);
+		 cell2.appendChild(child2)
+	 }
+}
+
+function getAreasOfContribution(checkboxName) {		
+	var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked')
+	var values = [];
+	Array.prototype.forEach.call(checkboxes, function(el) {
+        values.push(el.value);
+    });
+	return values
+}
+
+
+function getNomineesList(tableName) {
+	var table = document.getElementById(tableName)
+	var totalRows = table.rows.length -1;
+	var tableData = [ ]
+	for (let i =1; i <= totalRows; i++) {
+    let row = table.rows[i]	
+	if( row.cells[0].childNodes[0].value !== "" && row.cells[1].childNodes[0].value !== "") {
+	tableData.push(row.cells[0].childNodes[0].value + "-" + row.cells[1].childNodes[0].value)
+	}	
+ }
+  return tableData
+
+}
+
+function deleteRow(tableName) {	
+     var table = document.getElementById(tableName)
+     var totalRows = table.rows.length; 
+	 if (totalRows <= 2 ) {
+		 alert("at-least one nominee is mandatory")
+	 }else {
+		 table.deleteRow(totalRows - 1)
+	 }
+}
+AJS.toInit(function () {
+	// ... your initialization code here
+	{ if (AJS.$("div.ia-fixed-sidebar").width() > 55){ AJS.Confluence.Sidebar.toggle();}}
+	intitalize()
+	console.log("entry 1");
+	console.log("current page id is " , CURRENT_PAGE_ID)
+	//alert("entry 1")
+})
+
+
+</script>
+
+
+</html>
